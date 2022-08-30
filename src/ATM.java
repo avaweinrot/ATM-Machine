@@ -1,7 +1,10 @@
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.text.NumberFormat;
 public class ATM {
 	private HashMap<Integer, Double> FullAtm; 
+	NumberFormat nf = new DecimalFormat("0.00");
 	
 	public ATM()
 	{
@@ -32,7 +35,9 @@ public class ATM {
 		{
 			return (0.0);
 		}
-		return (FullAtm.get(accountNumber)); 
+		Double balance = FullAtm.get(accountNumber);
+		balance = Double.parseDouble(nf.format(balance));
+		return (balance); 
 	}
 	
 	public boolean depositMoney (int accountNumber, double deposit)
