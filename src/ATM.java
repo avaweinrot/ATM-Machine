@@ -1,3 +1,4 @@
+
 import java.util.HashMap;
 public class ATM {
 	private HashMap<Integer, Double> FullAtm; 
@@ -40,9 +41,16 @@ public class ATM {
 		{
 			return false;
 		}
-		double total = FullAtm.get(accountNumber) + deposit;
-		FullAtm.replace(accountNumber, total); 
-		return true; 
+		if (deposit >= 0.0)
+		{
+			double total = FullAtm.get(accountNumber) + deposit;
+			FullAtm.replace(accountNumber, total); 
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 		
 	}
 	
@@ -52,8 +60,23 @@ public class ATM {
 		{
 			return false;
 		}
-		double total = FullAtm.get(accountNumber) - withdrawl;
-		FullAtm.replace(accountNumber, total); 
-		return true; 
+		if (withdrawl >= 0.0)
+		{
+			double total = FullAtm.get(accountNumber) - withdrawl;
+			if (total >= 0.0)
+			{
+				FullAtm.replace(accountNumber, total); 
+				return true;
+			}
+			else 
+			{
+				return false; 
+			}
+		}
+		else
+		{
+			return false; 
+		}
 	}
 }
+
